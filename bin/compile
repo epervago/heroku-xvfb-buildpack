@@ -27,3 +27,9 @@ mkdir -p $BUILD_DIR/vendor/lib
 cp -R $CACHE_DIR/Xvfb/bin/* $BUILD_DIR/bin
 cp -R $CACHE_DIR/Xvfb/share/* $BUILD_DIR/share
 cp -R $CACHE_DIR/Xvfb/lib/* $BUILD_DIR/vendor/lib
+
+echo "-----> Downloading and installing ChromeDriver"
+chromedriver_url="http://chromedriver.storage.googleapis.com/2.13/chromedriver_linux64.zip"
+curl $chromedriver_url -s -o $BUILD_DIR/bin/chromedriver.zip
+unzip $BUILD_DIR/bin/chromedriver.zip
+rm $BUILD_DIR/bin/chromedriver.zip
