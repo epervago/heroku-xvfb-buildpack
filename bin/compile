@@ -9,8 +9,8 @@ CACHE_DIR=$2
 # http://orm-buildpack.s3.amazonaws.com/Xvfb.tar.gz
 
 # Buildpack URL
-FILE_NAME=xvfb-1.15.1.tar.bz2
-BUILDPACK_XVFB_PACKAGE=https://s3.amazonaws.com/misc-listo-mx/binaries/${FILE_NAME}
+FILE_NAME=xvfb.tar.bz2
+BUILDPACK_XVFB_PACKAGE=https://s3.amazonaws.com/heroku.buildpacks/${FILE_NAME}
 
 mkdir -p $CACHE_DIR
 if ! [ -e $CACHE_DIR/$FILE_NAME ]; then
@@ -19,6 +19,5 @@ if ! [ -e $CACHE_DIR/$FILE_NAME ]; then
 fi
 
 echo "-----> Extracting XVFB binaries to ${BUILD_DIR}/vendor/xvfb"
-mkdir -p $BUILD_DIR/vendor
 tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
-mv $CACHE_DIR/Xvfb $BUILD_DIR/vendor/
+cp -R $CACHE_DIR/Xvfb/* $BUILD_DIR
